@@ -81,6 +81,7 @@ function App() {
               filtered={filtered}
               setFiltertext={setFiltertext}
               currentPosts={currentPosts}
+              setFiltered={setFiltered}
             />
             <Pagination
               postsPerPage={postsPerPage}
