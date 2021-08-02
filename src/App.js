@@ -6,46 +6,61 @@ import Pagination from "./components/Pagination/Pagination";
 import axios from "axios";
 
 function App() {
+  const [results, setResults] = useState([]);
 
- const [results, setResults] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
+  useEffect(() => {
+    axios("mockData.json").then((res) => setResults(res.data.data));
+  }, []);
 
- const [filtered, setFiltered] = useState([]);
+  // writen on search bar
+  const [filterText, setFiltertext] = useState(
+    localStorage.getItem("text") ? localStorage.getItem("text") : ""
+  );
 
- useEffect(() => {
-   axios("mockData.json").then((res) => setResults(res.data.data));
- }, []);
+  localStorage.setItem("text", filterText);
 
- // writen on search bar
- const [filterText, setFiltertext] = useState(
-   localStorage.getItem("text") ? localStorage.getItem("text") : ""
- );
+  useEffect(() => {
+    if (results.length) {
+      setFiltered(
+        results.filter((item) => {
+          return Object.keys(item).some((key) =>
+            item[key]
+              .toString()
+              .toLowerCase()
+              .includes(filterText.toString().toLowerCase())
+          );
+        })
+      );
+    }
+  }, [filterText, results]);
 
- localStorage.setItem("text", filterText);
-
- useEffect(() => {
-   if (results.length) {
-     setFiltered(
-       results.filter((item) => {
-         return Object.keys(item).some((key) =>
-           item[key]
-             .toString()
-             .toLowerCase()
-             .includes(filterText.toString().toLowerCase())
-         );
-       })
-     );
-   }
- }, [filterText, results]);
-
-
- useEffect(() => {
-   console.log("result is changed");
- }, []);
+  useEffect(() => {
+    console.log("result is changed");
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
   }
+
+  //////// pagination //////////
+
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostPerPage] = useState(6);
+
+  useEffect(() => {
+    setPosts(filtered);
+  });
+
+  //get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  //change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
@@ -65,8 +80,13 @@ function App() {
             <ListPage
               filtered={filtered}
               setFiltertext={setFiltertext}
+              currentPosts={currentPosts}
             />
-            <Pagination />
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={posts.length}
+              paginate={paginate}
+            />
           </Route>
         </Switch>
       </Router>

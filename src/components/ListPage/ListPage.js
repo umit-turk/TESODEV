@@ -1,13 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ListPage.module.css";
 
 
-const ListPage = ({setFiltered ,filtered, setFiltertext }) => {
+const ListPage = ({setFiltered ,filtered, setFiltertext, currentPosts }) => {
   const [toggle, setToggle] = useState(false)
+
+ /*  const [posts, setPosts] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostPerPage] = useState(5)
+
+  useEffect(() => {
+    setPosts(filtered)
+  })
+
+  //get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); */
+  
 
   const handleClick = () => {
     setToggle(!toggle)
   }
+
+  /* const [pageNumber, setPageNumber] = useState(0);
+
+  const filteredItemPerPage = 6;
+  const pageVisited = pageNumber * filteredItemPerPage;
+
+  pageCount = Math.ceil(filtered.length / filteredItemPerPage); */
+
+  
 
   return (
     <div>
@@ -44,7 +67,7 @@ const ListPage = ({setFiltered ,filtered, setFiltertext }) => {
       </div>
       
          {
-           filtered.slice(0,6).map((name, index) => (
+           currentPosts.map((name, index) => (
             <div key={index} className={styles.container}>
             <div className={styles.list}>
               <div className={styles.name}>{name[0]}</div>
