@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./ListPage.module.css";
 
 
-const ListPage = ({filteredUsers, search, setSearch }) => {
+const ListPage = ({setFiltered ,filtered, setFiltertext }) => {
   const [toggle, setToggle] = useState(false)
 
   const handleClick = () => {
@@ -18,8 +18,8 @@ const ListPage = ({filteredUsers, search, setSearch }) => {
         <div>
           <input
             className={styles.input}
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={localStorage.getItem("text")}
+            onChange={(e) => setFiltertext(e.target.value)}
           />
         </div>
         <div>
@@ -43,7 +43,28 @@ const ListPage = ({filteredUsers, search, setSearch }) => {
         }
       </div>
       
-          {filteredUsers.map((item) =>
+         {
+           filtered.slice(0,6).map((name, index) => (
+            <div key={index} className={styles.container}>
+            <div className={styles.list}>
+              <div className={styles.name}>{name[0]}</div>
+              <div className={styles.email}>{name[2]}</div>
+            </div>
+            <div className={styles.date}>{name[3]}</div>
+            <div className={styles.line}></div>
+          </div>
+           ))
+         }
+         
+    </div>
+  );
+};
+
+export default ListPage;
+
+
+/* 
+/*  {filtered.map((item) =>
             item.data.slice(0, 6).map((name) => (
               <div className={styles.container}>
                 <div className={styles.list}>
@@ -54,12 +75,6 @@ const ListPage = ({filteredUsers, search, setSearch }) => {
                 <div className={styles.line}></div>
               </div>
             ))
-          )}
-         
-    </div>
-  );
-};
-
-export default ListPage;
+          )} */
 
 

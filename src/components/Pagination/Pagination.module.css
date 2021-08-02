@@ -31,6 +31,7 @@ a {
   letter-spacing: 0em;
   text-align: left;
   text-align: center;
+  cursor: pointer;
 }
 .next {
   width: 85.71px;
