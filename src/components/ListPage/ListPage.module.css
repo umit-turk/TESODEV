@@ -1,0 +1,141 @@
+header {
+  display: flex;
+}
+.logo {
+  margin: 27px 35px 66px 37px;
+}
+.input {
+  width: 509px;
+  height: 46px;
+  margin: 35px 24px 75px 0px;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  padding: 13px 346px 7px 20px;
+  line-height: 21.09px;
+  font-size: 18px;
+  font-style: normal;
+  color: #484848;
+}
+.btn {
+  margin: 32px 388px 78px 0px;
+  width: 138px;
+  height: 46px;
+  background: #4f75c2;
+  border-radius: 8px;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21.09px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.order {
+  display: flex;
+  position: relative;
+}
+.orderlogo {
+  margin: 0px 8px 3px 754px;
+}
+.ordertext {
+  font-style: normal;
+  font-size: 18px;
+  color: #484848;
+  font-weight: bold;
+  line-height: 21px;
+  margin: 2px 395px 3px 0px;
+  cursor: pointer;
+}
+
+.container {
+  width: 661px;
+  height: 68px;
+  margin-left: 212px;
+  margin-right: 407px;
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.container:hover {
+  background: #c4c4c4;
+}
+.list {
+  display: flex;
+}
+.name {
+  padding-left: 11px;
+  padding-top: 10px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #484848;
+}
+.email {
+  position: absolute;
+  left: 223px;
+  padding-top: 9px;
+  color: #484848;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.date {
+  padding-left: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #686868;
+}
+.line {
+  border: 1px solid #585858;
+  margin-left: 11px;
+  margin-right: 11px;
+}
+.modal {
+  width: 156px;
+  height: 127px;
+  border: 1px solid #484848;
+  position: absolute;
+  left: 814px;
+  top: 8px;
+  z-index: 2;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+li {
+    width: 123px;
+    height: 29px;
+  list-style: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+  cursor: pointer;
+  line-height: 29px;
+}
+li:hover{
+    background: #c4c4c4;
+    border-radius: 4px;
+    color: white;
+}
